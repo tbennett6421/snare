@@ -1,0 +1,1 @@
+nmap -iL $rhosts -sS -sU -p 25,110,143,465,993,995 -n --open --reason -oA mail-targets
