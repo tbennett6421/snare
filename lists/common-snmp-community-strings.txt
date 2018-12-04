@@ -31,7 +31,6 @@ Security
 s!a@m#n$p%c
 Switch
 System
-TENmanUFactOryPOWER
 TEST
 access
 adm
