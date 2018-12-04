@@ -1,2 +1,5 @@
-rhosts
-in_file
+domain:		a domain
+in_file:	an input file
+range:		a range of ips
+rhost:		a singular target
+rhosts:		a source of targets
