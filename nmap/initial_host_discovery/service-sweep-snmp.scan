@@ -1,1 +1,1 @@
-nmap -iL $rhosts -sS -sU -p 161,162 -n --open --reason -oA snmp-targets
+nmap -iL <hosts.txt> -sS -sU -p 161,162 -n --open --reason -oA snmp-targets

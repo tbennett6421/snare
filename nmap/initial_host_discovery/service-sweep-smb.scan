@@ -1,1 +1,1 @@
-nmap -iL $rhosts -sS -sU -p 135,137-139,445 -n --open --reason -oA smb-targets
+nmap -iL <hosts.txt> -sS -sU -p 135,137-139,445 -n --open --reason -oA smb-targets
