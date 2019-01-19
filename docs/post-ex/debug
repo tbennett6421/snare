@@ -1,0 +1,11 @@
+debug.exe can be used to transfer binaries to the target
+    - There is a 64k byte size limit to the files that can be created by debug.exe
+-----------------------------------------------------------
+## use a packer to decrease file size
+cp /usr/share/windows-binaries/nc.exe ~/
+upx -9 ~/nc.exe
+
+## use exe2bat to convert to a txt file
+# locate exe2bat
+cp /usr/share/windows-binaries/exe2bat.exe .
+wine exe2bat.exe nc.exe nc.txt
