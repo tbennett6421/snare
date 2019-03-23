@@ -1,0 +1,5 @@
+TFTP is trivial to use as a server
+-----------------------------------------------------------
+root@kali:~# mkdir /tftp
+root@kali:~# atftpd --daemon --port 69 /tftp
+root@kali:~# cp /usr/share/windows-binaries/nc.exe /tftp/
