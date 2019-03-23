@@ -1,0 +1,6 @@
+1. Identify exact amount of bytes to crash
+2. Control EIP/ESP
+3. find bad-chars
+4. find the JMP ESP
+5. Write shellcode
+6. Exploit
