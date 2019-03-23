@@ -1,0 +1,3 @@
+apt-get install mingw-w64
+i686-w64-mingw32-gcc 646-fixed.c -lws2_32 -o 646.exe
+wine 646.exe 10.11.1.35
