@@ -1,3 +1,0 @@
-# 1000 bytes will crash application
-msf-pattern_create -l 1000
-msf-pattern_offset -l 1000 -q 35724134
