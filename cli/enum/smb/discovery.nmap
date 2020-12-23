@@ -1,1 +1,0 @@
-nmap -v -p 139,445 -oG smb.txt $targets
