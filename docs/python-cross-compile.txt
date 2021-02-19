@@ -1,5 +1,0 @@
-# install python3 under wine
-# use pip to install pyinstaller
-# compile ms-exploits
-
-wine python pyinstaller.py --onefile ms11-080.py
